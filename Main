@@ -27,7 +27,13 @@ public class Main {
 		
 			//Читаем погоду через костыль
 		String s = HttpClient.getURLContent("http://www.webservicex.net/globalweather.asmx/GetWeather?CityName=Krasnodar&CountryName=Russia" );
-	    String temperature = s.substring(525, 530);
+	    int firstText = s.indexOf("&lt;Temperature&gt;");
+	    int lastText = s.indexOf("&lt;/Temperature&gt;");
+	    
+	    String temperature = s.substring((firstText + 19), lastText);
+	    
+	    System.out.println(firstText);
+	    System.out.println(lastText);
 	     Window.lblWeather.setText(temperature);
 	     
 	     //Читаем "погоду"
