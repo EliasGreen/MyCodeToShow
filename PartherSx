@@ -1,0 +1,51 @@
+package ru.Illadia.Elias;
+
+import java.io.File;
+import java.util.jar.Attributes;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
+
+// Парсит файл
+public class PartherSx extends DefaultHandler {
+	//Файл:
+	
+	String thisElement = ""; 
+	
+	//Создаем хэндлер
+	
+		//Вызывается на начале документа
+		@Override 
+		public void startDocument() throws SAXException { 
+		  System.out.println("Start parse XML..."); 
+		} 
+		
+		//Вызывается на начале тэга
+		public void startElement(String namespaceURI, String localName, String qName, Attributes atts) throws SAXException { 
+		  thisElement = qName;  
+		} 
+		//На конце
+		@Override 
+		public void endElement(String namespaceURI, String localName, String qName) throws SAXException { 
+		  thisElement = ""; 
+		} 
+          // Содержимое тега:
+          @Override 
+          public void characters(char[] ch, int start, int length) throws SAXException { 
+            if (thisElement.equals("Temperature")) {     
+              Window.lblWeather.setText(new String(ch, start, length));
+              System.out.println("P COMPLETE");
+              
+                } 
+	        }
+          //Конец парсинга
+          @Override 
+          public void endDocument() { 
+            System.out.println("Stop parse XML..."); 
+          } 
+		
+	}
+
