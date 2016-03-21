@@ -1,0 +1,51 @@
+package ru.Illadia.Elias;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+
+//Принимает xml файл
+public class HttpClient {
+	private final static String USER_AGENT = "Mozilla/5.0";
+	public static StringBuffer response;
+	
+	
+
+	// HTTP GET 
+	public static String getURLContent(String p_sURL)
+	{ URL oURL;
+	    URLConnection oConnection;
+	    BufferedReader oReader;
+	    String sLine;
+	    StringBuilder sbResponse;
+	    String sResponse = null;
+
+	    try
+	    { oURL = new URL(p_sURL); oConnection = oURL.openConnection(); oReader = new BufferedReader(new InputStreamReader(oConnection.getInputStream())); sbResponse = new StringBuilder();
+
+	        while((sLine = oReader.readLine()) != null)
+	        { sbResponse.append(sLine);
+	        } sResponse = sbResponse.toString();
+	    }
+	    catch(Exception e)
+	    { e.printStackTrace();
+	    }
+
+	    return sResponse;
+	}
+
+	     
+
+	}
+	
+	
+   
