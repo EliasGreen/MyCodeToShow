@@ -13,7 +13,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.w3c.dom.Document;
 
-//Принимает xml файл
+//Этот класс создаем подключение к серверу и считывает нужный текст в String 
 public class HttpClient {
 	private final static String USER_AGENT = "Mozilla/5.0";
 	public static StringBuffer response;
