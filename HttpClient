@@ -20,7 +20,7 @@ public class HttpClient {
 	
 	
 
-	// HTTP GET 
+	// HTTP подключение к серверу
 	public static String getURLContent(String p_sURL)
 	{ URL oURL;
 	    URLConnection oConnection;
